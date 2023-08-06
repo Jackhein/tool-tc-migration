@@ -32,35 +32,35 @@ DELETE FROM character_stats WHERE guid NOT IN (SELECT guid FROM characters);
 DELETE FROM character_talent WHERE guid NOT IN (SELECT guid FROM characters);
 DELETE FROM corpse WHERE guid NOT IN (SELECT guid FROM characters);
 DELETE FROM item_instance WHERE owner_guid <> 0 AND owner_guid NOT IN (SELECT guid FROM characters);
-DELETE FROM item_refund_instance WHERE player_guid NOT IN (SELECT guid FROM characters);
-DELETE FROM mail WHERE sender NOT IN (SELECT guid FROM characters) AND messageType = 0;
-DELETE FROM mail WHERE receiver NOT IN (SELECT guid FROM characters);
-DELETE FROM mail_items WHERE receiver NOT IN (SELECT guid FROM characters);
-DELETE FROM petition WHERE ownerguid NOT IN (SELECT guid FROM characters);
-DELETE FROM petition_sign WHERE ownerguid NOT IN (SELECT guid FROM characters);
-DELETE FROM petition_sign WHERE playerguid NOT IN (SELECT guid FROM characters);
+DELETE FROM item_refund_instance WHERE player_guid NOT IN (SELECT guid FROM `characters`);
+DELETE FROM mail WHERE sender NOT IN (SELECT guid FROM `characters`) AND messageType = 0;
+DELETE FROM mail WHERE receiver NOT IN (SELECT guid FROM `characters`);
+DELETE FROM mail_items WHERE receiver NOT IN (SELECT guid FROM `characters`);
+DELETE FROM petition WHERE ownerguid NOT IN (SELECT guid FROM `characters`);
+DELETE FROM petition_sign WHERE ownerguid NOT IN (SELECT guid FROM `characters`);
+DELETE FROM petition_sign WHERE playerguid NOT IN (SELECT guid FROM `characters`);
 
 -- 5. Cleanup group tables
 -- 5.1. Delete groups with inexistent leader
 -- DELETE FROM groups WHERE leaderGuid NOT IN (SELECT guid FROM characters);
 -- 5.2. Delete inexistent group members
-DELETE FROM group_member WHERE memberGuid NOT IN (SELECT guid FROM characters);
+DELETE FROM `group_member` WHERE memberGuid NOT IN (SELECT guid FROM `characters`);
 -- 5.3. Delete members for inexistent groups
-DELETE FROM group_member WHERE guid NOT IN (SELECT guid FROM groups);
+DELETE FROM `group_member` WHERE guid NOT IN (SELECT guid FROM `groups`);
 -- 5.4. Delete empty groups
-DELETE FROM groups WHERE guid NOT IN (SELECT guid FROM group_member);
+DELETE FROM `groups` WHERE guid NOT IN (SELECT guid FROM `group_member`);
 -- 5.5. Delete referencing data for inexistent groups
-DELETE FROM group_instance WHERE guid NOT IN (SELECT guid FROM groups);
+DELETE FROM `group_instance` WHERE guid NOT IN (SELECT guid FROM `groups`);
 
 -- 6. Cleanup guild tables
 -- 6.1. Delete guilds with inexistent leader
 -- DELETE FROM guild WHERE leaderGuid NOT IN (SELECT guid FROM characters);
 -- 6.2. Delete inexistent guild members
-DELETE FROM guild_member WHERE guid NOT IN (SELECT guid FROM characters);
+DELETE FROM guild_member WHERE guid NOT IN (SELECT guid FROM `characters`);
 -- 6.3. Delete members for inexistent guilds
-DELETE FROM guild_member WHERE guildid NOT IN (SELECT guildid FROM guild);
+DELETE FROM guild_member WHERE guildid NOT IN (SELECT guildid FROM `guild`);
 -- 6.4. Delete empty guilds
-DELETE FROM guild WHERE guildid NOT IN (SELECT guildid FROM guild_member);
+DELETE FROM guild WHERE guildid NOT IN (SELECT guildid FROM `guild_member`);
 -- 6.5. Delete referencing data for inexistent guilds
 DELETE FROM guild_bank_eventlog WHERE guildid NOT IN (SELECT guildid FROM guild);
 DELETE FROM guild_bank_item WHERE guildid NOT IN (SELECT guildid FROM guild);
