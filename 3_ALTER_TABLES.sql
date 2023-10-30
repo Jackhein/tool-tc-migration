@@ -40,8 +40,9 @@ ALTER TABLE character_spell DROP COLUMN `disabled`;
 ALTER TABLE character_spell ADD `specMask` TINYINT(3) UNSIGNED NOT NULL DEFAULT 255;
 
 -- characters
-ALTER TABLE characters ADD `order` tinyint(4) NULL AFTER grantableLevels;
+ALTER TABLE `characters` ADD `order` tinyint(4) NULL AFTER grantableLevels;
 ALTER TABLE `characters` ADD COLUMN `creation_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `grantableLevels`;
+ALTER TABLE `characters` ADD COLUMN extraBonusTalentCount int NOT NULL DEFAULT 0 AFTER `innTriggerId`;
 
 -- character_homebind AC commit: 2e6f6e26da8f01cd67bbb56e0e7aa961ffd5f51f
 ALTER TABLE `character_homebind` ADD COLUMN `posO` FLOAT NOT NULL DEFAULT '0' AFTER `posZ`;
