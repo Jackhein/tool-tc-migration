@@ -262,6 +262,6 @@ CREATE TABLE IF NOT EXISTS `recovery_item` (
 -- profanity_name AC commit: 
 --
 CREATE TABLE IF NOT EXISTS `profanity_name` (
-  `name` varchar(12) DEFAULT NULL,
+  `name` varchar(12) NOT NULL,
   PRIMARY KEY (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
