@@ -257,3 +257,11 @@ CREATE TABLE IF NOT EXISTS `recovery_item` (
   PRIMARY KEY (`Id`),
   KEY `idx_guid` (`Guid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- profanity_name AC commit: 
+--
+CREATE TABLE IF NOT EXISTS `profanity_name` (
+  `name` varchar(12) DEFAULT NULL,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
