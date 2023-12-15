@@ -91,6 +91,13 @@ MigrateAuth()
     echo "Execute: $file_name"
     /usr/bin/mysql --database="${AUTH_DB}" --user="${DB_USER}" --password="${DB_PASS}" --host="${DB_HOSTNAME}" --port="${DB_PORT}" < ./"${file_name}".sql
   done
+  /usr/bin/mysql --database="${AUTH_DB}"\
+    --user="${DB_USER}"\
+    --password="${DB_PASS}"\
+    --host="${DB_HOSTNAME}"\
+    --port="${DB_PORT}"\
+    --execute="RENAME TABLE updates TO updates_tc;
+      RENAME TABLE updates_include TO updates_include_tc;"
 }
 
 MigrateCharacters()
@@ -109,6 +116,13 @@ MigrateCharacters()
       --port="${DB_PORT}"\
       < "${file_name}.sql"
     done
+    /usr/bin/mysql --database="${CHARACTERS_DBS_ARRAY[$db_index]}"\
+      --user="${DB_USER}"\
+      --password="${DB_PASS}"\
+      --host="${DB_HOSTNAME}"\
+      --port="${DB_PORT}"\
+      --execute="RENAME TABLE updates TO updates_tc;
+	  RENAME TABLE updates_include TO updates_include_tc;"
   done
 }
 
