@@ -44,6 +44,9 @@ ALTER TABLE `characters` ADD `order` tinyint(4) NULL AFTER grantableLevels;
 ALTER TABLE `characters` ADD COLUMN `creation_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `grantableLevels`;
 ALTER TABLE `characters` ADD COLUMN extraBonusTalentCount int NOT NULL DEFAULT 0 AFTER `innTriggerId`;
 
+-- character_homebind AC commit: 2e6f6e26da8f01cd67bbb56e0e7aa961ffd5f51f
+ALTER TABLE `character_homebind` ADD COLUMN `posO` FLOAT NOT NULL DEFAULT '0' AFTER `posZ`;
+
 -- log_money AC commit: 2fec54c4429a03b406b30bbce29c5b376ad04e31
 ALTER TABLE `log_money` ADD COLUMN `type` TINYINT NOT NULL COMMENT '1=COD,2=AH,3=GB DEPOSIT,4=GB WITHDRAW,5=MAIL,6=TRADE' AFTER `date`;
 
