@@ -65,4 +65,6 @@ ALTER TABLE character_aura DROP COLUMN `applyResilience`;
 ALTER TABLE channels DROP COLUMN `bannedList`;
 
 --
+ALTER TABLE corpse DROP PRIMARY KEY;
 ALTER TABLE corpse DROP COLUMN `corpseGuid`;
+ALTER TABLE corpse ADD PRIMARY KEY (guid);
