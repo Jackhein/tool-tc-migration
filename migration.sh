@@ -132,7 +132,7 @@ MigrateCharactersMod()
     RepeatChar '-'
     echo "Migrate ${CHARACTERS_DBS_ARRAY[$db_index]}"
     RepeatChar '-'
-    for file_name in "${MIGRATION_MOD[@]^^}"
+    for file_name in "${MIGRATION_MOD[@]}"
     do
       echo "Execute: $file_name"
       /usr/bin/mysql --database="${CHARACTERS_DBS_ARRAY[$db_index]}"\
