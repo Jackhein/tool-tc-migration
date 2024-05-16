@@ -14,8 +14,7 @@ FROM `item_instance`
 WHERE `transmog` != 0 and `transmog` != `itemEntry`;
 
 -- MOD_TRANSMOGRIFICATION - Remove unused column
-ALTER TABLE `item_instance`
-DROP COLUMN IF EXISTS `transmog`;
+ALTER TABLE `item_instance` DROP COLUMN `transmog`;
 
 -- MOD_TRANSMOGRIFICATION - Add table custom_unlocked_appearances
 CREATE TABLE IF NOT EXISTS `custom_unlocked_appearances` (
