@@ -102,6 +102,7 @@ MigrateAuth()
 
 MigrateCharacters()
 {
+  sed -i "s/SET @maxprimarytradeskill := [0-9]\+;/SET @maxprimarytradeskill := ${MAX_PRIMARY_TRADE_SKILL};/" 4_CLEANUP_AND_CONVERT_SPELLS.sql
   for db_index in "${!CHARACTERS_DBS_ARRAY[@]}"; do
     RepeatChar '-'
     echo "Migrate ${CHARACTERS_DBS_ARRAY[$db_index]}"
